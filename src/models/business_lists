@@ -1,0 +1,44 @@
+("use strict");
+module.exports = (sequelize, DataTypes) => {
+  const Business_User_List = sequelize.define(
+    "Business_Lists",
+      {
+        id: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          primaryKey: true,
+          autoIncrement: true
+        },
+        b_id: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          references: {
+            model: 'Business',
+            Key: 'id',
+            as: 'b_id'
+          },
+        },
+        b_list_name: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        b_list_desc: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        createdAt: {
+          allowNull: false,
+          type: DataTypes.DATE
+        },
+        updatedAt: {
+          allowNull: false,
+          type: DataTypes.DATE
+        }
+    },
+    {}
+  );
+  Business_User_List.associate = function (models) {
+    Business_User_List.belongsTo(models.Business, { foreignKey: "id" });
+  };
+  return Business_User_List;
+};
