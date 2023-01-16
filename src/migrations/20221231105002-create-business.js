@@ -31,7 +31,7 @@ module.exports = {
          allowNull: false,
        },
        b_socials: {
-         type: Sequelize.JSON,
+         type: Sequelize.STRING,
          allowNull: false,
        },
        b_address: {
